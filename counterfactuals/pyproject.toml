@@ -1,0 +1,37 @@
+[project]
+name = "counterfactuals"
+version = "0.1.0"
+description = "A package for demonstrating counterfactuals"
+
+dependencies = [
+  "torchdiffeq",
+  "alibi[tensorflow]",
+  "numpy",
+  "scipy",
+  "cvxpy",
+  "scikit-learn",
+  "neptune",
+  "hydra-core",
+  "mlflow",
+  "umap-learn",
+  "nflows @ git+https://github.com/pfilo8/nflows.git",
+  "UMNN",
+  "pandas",
+  "torch",
+  "tqdm",
+  "matplotlib",
+  "plotly",
+  "ipykernel",
+  "scikit-learn",
+  "mlflow",
+  "ruff",
+  "pre-commit",
+  "pytest",
+]
+
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages .find]
+where = ["."]

@@ -1,0 +1,25 @@
+defaults:
+  - _self_
+  - disc_model: mlr
+
+hydra:
+  sweeper:
+    max_batch_size: 10
+
+neptune:
+  enable: true
+  project: "ofurman/counterfactuals"
+  api_token: ${oc.env:NEPTUNE_API_TOKEN}
+  tags: ["train_disc_model"]
+  
+
+experiment:
+  output_folder: models/
+
+dataset:
+  _target_: counterfactuals.datasets.DigitsDataset
+
+disc_model:
+  epochs: 500
+  batch_size: 128
+  lr: 0.0003

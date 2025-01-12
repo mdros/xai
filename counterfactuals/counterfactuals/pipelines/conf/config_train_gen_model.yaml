@@ -1,0 +1,31 @@
+defaults:
+  - _self_
+  - gen_model: medium_maf
+  # - disc_model: lr
+
+hydra:
+  sweeper:
+    max_batch_size: 10
+
+neptune:
+  enable: true
+  project: "ofurman/counterfactuals"
+  api_token: ${oc.env:NEPTUNE_API_TOKEN}
+  tags: ["train_models"]
+  
+
+experiment:
+  output_folder: models/
+
+dataset:
+  _target_: counterfactuals.datasets.WineDataset
+
+gen_model:
+  batch_size: 256
+  epochs: 500
+  patience: 30
+  lr: 0.001
+  noise_lvl: 0.03
+
+# to enable relabeling, comment this and use defaults above
+disc_model: null
